@@ -1,0 +1,489 @@
+Write and run the following queries:
+
+1. The movies titled "Gladiator".
+
+db.movies.find({ title: "Gladiator" })
+Result:
+{
+  _id: 'movie:9',
+  title: 'Gladiator',
+  year: 2000,
+  genre: 'drama',
+  summary: "Le général romain Maximus est le plus fidèle soutien de l'empereur Marc Aurèle, qu'il aconduit de victoire en victoire avec une                    bravoure et un dévouement exemplaires.                    Jaloux du prestige de Maximus, et plus                    encore de l'amour que lui voue l'empereur,                    le fils de Marc-Aurèle, Commode, s'arroge                    brutalement le pouvoir, puis ordonne                    l'arrestation du général et son exécution.                    Maximus échappe à ses assassins mais ne peut                    empêcher le massacre de sa famille. Capturé                    par un marchand d'esclaves, il devient                    gladiateur et prépare sa vengeance.",
+  country: 'USA',
+  director: {
+    _id: 'artist:4',
+    last_name: 'Scott',
+    first_name: 'Ridley',
+    birth_date: '1937'
+  },
+  actors: [
+    {
+      _id: 'artist:23',
+      first_name: 'Russell',
+      last_name: 'Crowe',
+      birth_date: '1964',
+      role: 'Maximus'},
+    {
+      _id: 'artist:147',
+      first_name: 'Adam',
+      last_name: 'Baldwin',
+      birth_date: '1962',
+      role: 'Commode'
+    },
+    {
+      _id: 'artist:148',
+      first_name: 'Ryan',
+      last_name: 'ONeal',
+      birth_date: '1941',
+      role: 'Lucilla'
+    },
+    {
+      _id: 'artist:149',
+      first_name: 'Marisa',
+      last_name: 'Berenson',
+      birth_date: '1946',
+      role: 'Marc Aurele'
+    }
+  ]
+}
+
+
+2. The distinct genre values of movies.
+
+db.movies.distinct("genre")
+Result:
+
+[
+  'Action',      'Comédie',
+  'Fantastique', 'Guerre',
+  'Horreur',     'Science-fiction',
+  'Suspense',    'Thriller',
+  'Western',     'crime',
+  'drama',       'romance'
+]
+
+3. The movies of "crime" or "drama" genre.
+
+db.movies.find({ genre: { $in: ["crime", "drama"] } })
+Result:
+{
+  _id: 'movie:1',
+  title: 'Vertigo',
+  year: 1958,
+  genre: 'drama',
+  summary: "Scottie Ferguson, ancien inspecteur de police, est sujet au vertige depuis qu'il a vu mourir son collègue. Elster, son ami, le charge de surveiller sa femme, Madeleine, ayant des tendances suicidaires. Amoureux de la jeune femme Scottie ne remarque pas le piège qui se trame autour de lui et dont il va être la victime... ",
+  country: 'DE',
+  director: {
+    _id: 'artist:3',
+    last_name: 'Hitchcock',
+    first_name: 'Alfred',
+    birth_date: '1899'
+  },
+  actors: [
+    {
+      _id: 'artist:40',
+      first_name: 'Uma',
+      last_name: 'Thurman',
+      birth_date: '1970',
+      role: 'La mariée, alias "Black Mamba"'
+    },
+    {
+      _id: 'artist:213',
+      first_name: 'Lucy',
+      last_name: 'Liu',
+      birth_date: '1968',
+      role: 'O-Ren Ishii'
+    },
+    {
+      _id: 'artist:214',
+      first_name: 'David',
+      last_name: 'Carradine',
+      birth_date: '1936',
+      role: 'Bill'
+    },
+    {
+      _id: 'artist:215',
+      first_name: 'Michael',
+      last_name: 'Madsen',
+      birth_date: '1958',
+      role: 'Budd / Sidewinder'
+    },
+    {
+      _id: 'artist:216',
+      first_name: 'Daryl',
+      last_name: 'Hannah',
+      birth_date: '1960',
+      role: 'Elle Driver'
+    }
+  ]
+}
+
+4.The list of movies directed by "Hitchcock",display only title and year andsort them by year.
+
+db.movies.find(
+  { "director.last_name": "Hitchcock" },
+  { "title": 1, "year": 1, "_id": 0 }
+).sort({ "year": 1 })
+Result:
+{
+  title: 'Fenêtre sur cour',
+  year: 1954
+}
+{
+  title: 'Les oiseaux',
+  year: 1963
+}
+{
+  title: 'Vertigo',
+  year: 1958
+}
+{
+  title: 'La mort aux trousses',
+  year: 1959
+}
+{
+  title: 'Psychose',
+  year: 1960
+}
+{
+  title: 'Psychose',
+  year: 1960
+}
+
+5.The list of movies where "Cotillard" played.
+
+db.movies.find({ "actors.last_name": "Cotillard" })
+Result:
+{
+  _id: 'movie:86',
+  title: 'Inception',
+  year: 2010,
+  genre: 'Science-fiction',
+  summary: 'Dom Cobb est un voleur expérimenté – le meilleur qui soit dans l’art périlleux de l’extraction : sa spécialité consiste à s’approprier les secrets les plus précieux d’un individu, enfouis au plus profond de son subconscient, pendant qu’il rêve et que son esprit est particulièrement vulnérable. Très recherché pour ses talents dans l’univers trouble de l’espionnage industriel, Cobb est aussi devenu un fugitif traqué dans le monde entier qui a perdu tout ce qui lui est cher. Mais une ultime mission pourrait lui permettre de retrouver sa vie d’avant – à condition qu’il puisse accomplir l’impossible : l’inception. Au lieu de subtiliser un rêve, Cobb et son équipe doivent faire l’inverse : implanter une idée dans l’esprit d’un individu. S’ils y parviennent, il pourrait s’agir du crime parfait. Et pourtant, aussi méthodiques et doués soient-ils, rien n’aurait pu préparer Cobb et ses partenaires à un ennemi redoutable qui semble avoir systématiquement un coup d’avance sur eux. Un ennemi dont seul Cobb aurait pu soupçonner l’existence. ',
+  country: 'USA',
+  director: {
+    _id: 'artist:266',
+    last_name: 'Nolan',
+    first_name: 'Christopher',
+    birth_date: '1970'
+  },
+  actors: [
+    {
+      _id: 'artist:110',
+      first_name: 'Leonardo',
+      last_name: 'DiCaprio',
+      birth_date: '1974',
+      role: 'Cobb'
+    },
+    {
+      _id: 'artist:269',
+      first_name: 'Michael',
+      last_name: 'Caine',
+      birth_date: '1933',
+      role: 'Miles'
+    },
+    {
+      _id: 'artist:270',
+      first_name: 'Elen',
+      last_name: 'Page',
+      birth_date: null,
+      role: 'Ariadne'
+    },
+    {
+      _id: 'artist:271',
+      first_name: 'Marion',
+      last_name: 'Cotillard',
+      birth_date: '1975',
+      role: 'Mal'
+    }
+  ]
+}{
+  _id: 'movie:86',
+  title: 'Inception',
+  year: 2010,
+  genre: 'Science-fiction',
+  summary: 'Dom Cobb est un voleur expérimenté – le meilleur qui soit dans l’art périlleux de l’extraction : sa spécialité consiste à s’approprier les secrets les plus précieux d’un individu, enfouis au plus profond de son subconscient, pendant qu’il rêve et que son esprit est particulièrement vulnérable. Très recherché pour ses talents dans l’univers trouble de l’espionnage industriel, Cobb est aussi devenu un fugitif traqué dans le monde entier qui a perdu tout ce qui lui est cher. Mais une ultime mission pourrait lui permettre de retrouver sa vie d’avant – à condition qu’il puisse accomplir l’impossible : l’inception. Au lieu de subtiliser un rêve, Cobb et son équipe doivent faire l’inverse : implanter une idée dans l’esprit d’un individu. S’ils y parviennent, il pourrait s’agir du crime parfait. Et pourtant, aussi méthodiques et doués soient-ils, rien n’aurait pu préparer Cobb et ses partenaires à un ennemi redoutable qui semble avoir systématiquement un coup d’avance sur eux. Un ennemi dont seul Cobb aurait pu soupçonner l’existence. ',
+  country: 'USA',
+  director: {
+    _id: 'artist:266',
+    last_name: 'Nolan',
+    first_name: 'Christopher',
+    birth_date: '1970'
+  },
+  actors: [
+    {
+      _id: 'artist:110',
+      first_name: 'Leonardo',
+      last_name: 'DiCaprio',
+      birth_date: '1974',
+      role: 'Cobb'
+    },
+    {
+      _id: 'artist:269',
+      first_name: 'Michael',
+      last_name: 'Caine',
+      birth_date: '1933',
+      role: 'Miles'
+    },
+    {
+      _id: 'artist:270',
+      first_name: 'Elen',
+      last_name: 'Page',
+      birth_date: null,
+      role: 'Ariadne'
+    },
+    {
+      _id: 'artist:271',
+      first_name: 'Marion',
+      last_name: 'Cotillard',
+      birth_date: '1975',
+      role: 'Mal'
+    }
+  ]
+}
+{
+  _id: 'movie:86',
+  title: 'Inception',
+  year: 2010,
+  genre: 'Science-fiction',
+  summary: 'Dom Cobb est un voleur expérimenté – le meilleur qui soit dans l’art périlleux de l’extraction : sa spécialité consiste à s’approprier les secrets les plus précieux d’un individu, enfouis au plus profond de son subconscient, pendant qu’il rêve et que son esprit est particulièrement vulnérable. Très recherché pour ses talents dans l’univers trouble de l’espionnage industriel, Cobb est aussi devenu un fugitif traqué dans le monde entier qui a perdu tout ce qui lui est cher. Mais une ultime mission pourrait lui permettre de retrouver sa vie d’avant – à condition qu’il puisse accomplir l’impossible : l’inception. Au lieu de subtiliser un rêve, Cobb et son équipe doivent faire l’inverse : implanter une idée dans l’esprit d’un individu. S’ils y parviennent, il pourrait s’agir du crime parfait. Et pourtant, aussi méthodiques et doués soient-ils, rien n’aurait pu préparer Cobb et ses partenaires à un ennemi redoutable qui semble avoir systématiquement un coup d’avance sur eux. Un ennemi dont seul Cobb aurait pu soupçonner l’existence. ',
+  country: 'USA',
+  director: {
+    _id: 'artist:266',
+    last_name: 'Nolan',
+    first_name: 'Christopher',
+    birth_date: '1970'
+  },
+  actors: [
+    {
+      _id: 'artist:110',
+      first_name: 'Leonardo',
+      last_name: 'DiCaprio',
+      birth_date: '1974',
+      role: 'Cobb'
+    },
+    {
+      _id: 'artist:269',
+      first_name: 'Michael',
+      last_name: 'Caine',
+      birth_date: '1933',
+      role: 'Miles'
+    },
+    {
+      _id: 'artist:270',
+      first_name: 'Elen',
+      last_name: 'Page',
+      birth_date: null,
+      role: 'Ariadne'
+    },
+    {
+      _id: 'artist:271',
+      first_name: 'Marion',
+      last_name: 'Cotillard',
+      birth_date: '1975',
+      role: 'Mal'
+    }
+  ]
+}
+
+
+6. The movies released between 1967 and 1995.
+
+db.movies.find({ year : { $gte: 1967, $lte: 1995 } })
+Result:
+{
+  _id: 'movie:2',
+  title: 'Alien',
+  year: 1979,
+  genre: 'Science-fiction',
+  summary: `Près d'un vaisseau spatial échoué sur une lointaine planète, des Terriens en mission découvrent de bien étranges "oeufs". Ils en ramènent un à bord, ignorant qu'ils viennent d'introduire parmi eux un huitième passager particulièrement féroce et meurtrier. `,
+  country: 'USA',
+  director: {
+    _id: 'artist:4',
+    last_name: 'Scott',
+    first_name: 'Ridley',
+    birth_date: '1937'
+  },
+  actors: [
+    {
+      _id: 'artist:5',
+      first_name: 'Sigourney',
+      last_name: 'Weaver',
+      birth_date: '1949',
+      role: 'Ripley'
+    }
+  ]
+}
+
+
+7. The list of the movies released between 1967 and 1995, by displaying only title, year, director’s last name sorted by year.
+
+db.movies.find({ year: { $gte: 1967, $lte: 1995 } }, { title: 1, year: 1, "director.last_name": 1, _id: 0 }).sort({ year: 1 })
+Result:
+{
+  title: 'Le grand bleu',
+  year: 1988,
+  director: {
+    last_name: 'Besson'
+  }
+}
+{
+  title: 'Soleil vert',
+  year: 1973,
+  director: {
+    last_name: 'Fleischer'
+  }
+}
+{
+  title: 'Le parrain II',
+  year: 1974,
+  director: {
+    last_name: 'Coppola'
+  }
+}
+{
+  title: 'Les dents de la mer',
+  year: 1975,
+  director: {
+    last_name: 'Spielberg'
+  }
+}
+{
+  title: 'Taxi driver',
+  year: 1976,
+  director: {
+    last_name: 'Scorcese'
+  }
+}
+{
+  title: 'Le gendarme et les extra-terrestres',
+  year: 1978,
+  director: {
+    last_name: 'Girault'
+  }
+}
+{
+  title: 'Alien',
+  year: 1979,
+  director: {
+    last_name: 'Scott'
+  }
+}
+{
+  title: 'Les bronzés font du ski',
+  year: 1979,
+  director: {
+    last_name: 'Leconte'
+  }
+}
+{
+  title: 'Rain Man',
+  year: 1988,
+  director: {
+    last_name: 'Levinson'
+  }
+}
+{
+  title: 'Piège de cristal',
+  year: 1988,
+  director: {
+    last_name: 'McTierman'
+  }
+}
+{
+  title: 'Top Gun',
+  year: 1986,
+  director: {
+    last_name: 'Scott'
+  }
+}
+{
+  title: 'Le last_name de la rose',
+  year: 1986,
+  director: {
+    last_name: 'Annaud'
+  }
+}
+{
+  title: 'Sacrifice',
+  year: 1986,
+  director: {
+    last_name: 'Tarkovski'
+  }
+}
+
+
+8. The number of movies by country.
+
+db.movies.aggregate([
+  {
+    $group: {
+      _id: "$country",
+      count: { $sum: 1 }
+    }
+  }
+])
+Result:
+{
+  _id: 'IT',
+  count: 2
+}
+
+  _id: 'DE',
+  count: 1
+}
+{
+  _id: 'JP',
+  count: 1
+}
+{
+  _id: 'FR',
+  count: 17
+}
+{
+  _id: 'FR',
+  count: 17
+}
+
+9. The number of movies by country and actor.
+
+db.movies.aggregate([
+  {
+    $group: {
+      _id: { country: "$country", actor: "$actor" },
+      count: { $sum: 1 }
+    }
+  }
+])
+Result:
+{
+  _id: {
+    country: 'FR'
+  },
+  count: 17
+}
+{
+  _id: {
+    country: 'JP'
+  },
+  count: 1
+}
+{
+  _id: {
+    country: 'IT'
+  },
+  count: 2
+}
+{
+  _id: {
+    country: 'USA'
+  },
+  count: 67
+}
+{
+  _id: {
+    country: 'DE'
+  },
+  count: 1
+}

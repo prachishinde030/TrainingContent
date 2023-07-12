@@ -1,0 +1,125 @@
+1. Create a function which take the input as a number and squared it.
+
+function squareNumber(num) {
+  var square = num * num;
+  return square;
+}
+
+// Example usage:
+var input = 5;
+var result = squareNumber(input);
+console.log(result); //output = 25
+
+
+2. Declare one variable as a const and another should be var and perform multiplication.
+
+var a = 12;
+const b = 24;
+var square = a * b;
+console.log(square); //
+
+3.Find length of the functions.
+
+function squareNumber(num1, num2) {
+  
+}
+
+console.log(squareNumber.length);//output = 2
+
+4. write a function it will take array as an parameters and sum of the numbers in the array.
+
+const cars = [3,5,2];
+var sum = 0;
+for(let i = 0; i<cars.length; i++)
+{
+    sum+=cars[i];
+}
+console.log(sum);//output = 10
+
+5. Given a list of an array convert it to the upper case using arrow function
+
+const upper = () => {
+  var res=[];
+    for (let i = 0; i <text.length; i++) {
+      res[i] = text[i].toUpperCase();
+    }
+    console.log(res);
+  }
+
+var text=["a","b","c"];
+console.log(upper(text));
+
+6. print the firstname and lastname 
+
+const fullname = () => {
+  var res=[];
+    for (let i = 0; i <name.length; i++) {
+      res[i] = namee[i];
+    }
+    console.log(res);
+  }
+
+var namee=["Prachi","Shinde"];
+console.log(fullname(namee)); 
+  
+
+7. Write a function check season it takes a month parameter and returns the season:Autumn, Winter, Spring or Summer.
+const checkseason = (month) => {
+  if( month>=1 && month<=4)
+  {
+    console.log("Winter");
+  }
+  else if (month>=5 && month<=8)
+  {
+    console.log("Summer");
+  }
+  else if(month>=9 && month<=12)
+  {
+    console.log("Rainy");
+  }
+  
+  }
+
+var month=["Jan","Feb","March","April","May","June","Jul","Aug","Sep","Oct","Nov","Dec"];
+console.log(checkseason(5));
+
+
+8. Write a function called reverseCountries, it takes countries array and first it copy the array and returns the reverse of the original array.
+
+const country = () => {
+    var countryletters = [];    
+    countryletters = countryarr.reverse();
+    return countryletters;
+}
+var countryarr = ["India", "Japan", "America"];
+console.log(country(countryarr));
+
+
+9.Find the length of each characteristics in array.
+
+const fullname = () => {
+  var res=[];
+    for (let i = 0; i <namee.length; i++) {
+      res[i] = namee[i].length;
+    }
+    console.log(res);
+  }
+
+var namee=["Prachi","Shinde"];
+console.log(fullname(namee));
+  
+
+10. WAP to print a 19th table.
+
+const printTable = (num) => {
+    for (let i = 1; i <= 10; i++) {
+      var mul = num * i;
+      console.log(mul);
+    }
+  };
+  
+  printTable(19);
+
+11. create a function Person and take two attributes name,age
+
+
