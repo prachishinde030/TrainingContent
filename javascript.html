@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Course</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    /* Custom CSS styles */
+    body {
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+    }
+
+    .col-md-4 {
+      margin-bottom: 20px;
+    }
+
+    .list-group-item {
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .list-group-item:hover {
+      background-color: #f8f9fa;
+    }
+
+    .content {
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+      min-height: 200px;
+    }
+
+    .content h1 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .content p {
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Course Topics</h2>
+        <ul class="list-group">
+          <li class="list-group-item topic" data-topic="introduction">Introduction to JavaScript</li>
+          <li class="list-group-item topic" data-topic="variables">Variables and Data Types</li>
+          <li class="list-group-item topic" data-topic="control">Control Statements</li>
+          <li class="list-group-item topic" data-topic="oop">Functions</li>
+          <li class="list-group-item topic" data-topic="arrays">Arrays</li>
+        </ul>
+      </div>
+      <div class="col-md-8">
+        <div id="content" class="content">
+          <h1 style="color: rgb(7, 161, 53); font-size: 28px; font-weight: bold;">Welcome to the Javascript Course</h1>
+          <p>Please select a topic from the left to view its content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(".topic").click(function() {
+        var topic = $(this).data("topic");
+        loadContent(topic);
+      });
+    });
+
+    function loadContent(topic) {
+      // Define the content for each topic
+      var contentMap = {
+        introduction: {
+          title: "Introduction to JavaScript",
+          text: " JavaScript is a lightweight, cross-platform, single-threaded, and interpreted compiled programming language which is also known as the scripting language for webpages. It is well-known for the development of web pages, and many non-browser environments also use it.",
+        },
+        variables: {
+          title: "Variables and Data Types",
+          text: "JavaScript is a dynamically typed (also called loosely typed) scripting language. That is, in JavaScript variables can receive different data types over time. Datatypes are basically typed data that can be used and manipulated in a program.",
+        },
+        control: {
+          title: "Control Statements",
+          text: "There are basically two types of control statements in Javascript. Namely, Conditional Statements and Iterative Statements (in simple words, Loops). Conditional Statements: These are the ones that make a decision. There is an expression that gets passed, and then the conditional statement decides on it.",
+        },
+        oop: {
+          title: "Functions",
+          text: "A function is a group of reusable code which can be called anywhere in your program. This eliminates the need of writing the same code again and again. It helps programmers in writing modular codes. Functions allow a programmer to divide a big program into a number of small and manageable functions",
+        },
+        arrays: {
+          title: "Arrays",
+          text: "JavaScript Array is a single variable that is used to store elements of different data types. JavaScript arrays are zero-indexed. The Javascript Arrays are not associative in nature. Arrays are used when we have a list of items.",
+        },
+      };
+
+      // Update the content on the right side
+      var title = contentMap[topic].title;
+      var text = contentMap[topic].text;
+
+      $("#content").html("<h1>" + title + "</h1><p>" + text + "</p>");
+    }
+  </script>
+</body>
+</html>

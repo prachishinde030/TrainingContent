@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Java Course</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    /* Custom CSS styles */
+    body {
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 900px;
+    }
+
+    .topic-list {
+      margin-top: 20px;
+    }
+
+    .topic-list .list-group-item {
+      cursor: pointer;
+      transition: background-color 0.3s;
+      background-color: #eff3f6;
+    }
+
+    .topic-list .list-group-item:hover {
+      background-color: #f4f6f8;
+    }
+
+    .content {
+      padding: 20px;
+      background-color: #f3f4f5;
+      border-radius: 5px;
+      min-height: 200px;
+      transition: opacity 0.3s;
+    }
+
+    .content h1 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .content p {
+      line-height: 1.6;
+    }
+
+    .content.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Course Topics</h2>
+        <ul class="list-group topic-list">
+          <li class="list-group-item topic" data-topic="introduction">Introduction to Java</li>
+          <li class="list-group-item topic" data-topic="variables">Variables and Data Types</li>
+          <li class="list-group-item topic" data-topic="control">Control Statements</li>
+          <li class="list-group-item topic" data-topic="oop">Object-Oriented Programming</li>
+          <li class="list-group-item topic" data-topic="arrays">Arrays and Collections</li>
+          <li class="list-group-item topic" data-topic="exception">Exception Handling</li>
+          <li class="list-group-item topic" data-topic="file">File Handling</li>
+        </ul>
+      </div>
+      <div class="col-md-8">
+        <div id="content" class="content">
+          <h1 style="color: rgb(7, 161, 53); font-size: 28px; font-weight: bold;">Welcome to the Java Course</h1>
+          <p>Please select a topic from the left to view its content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(".topic").click(function() {
+        var topic = $(this).data("topic");
+        loadContent(topic);
+      });
+    });
+
+    function loadContent(topic) {
+      // Define the content for each topic
+      var contentMap = {
+        introduction: {
+          title: "Introduction to Java",
+          text: " Java is a class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is intended to let application developers write once, and run anywhere (WORA), meaning that compiled Java code can run on all platforms that support Java without the need for recompilation. Java was first released in 1995 and is widely used for developing applications for desktop, web, and mobile devices. Java is known for its simplicity, robustness, and security features, making it a popular choice for enterprise-level applications. JAVA was developed by James Gosling at Sun Microsystems Inc in the year 1995 and later acquired by Oracle Corporation. It is a simple programming language. Java makes writing, compiling, and debugging programming easy. It helps to create reusable code and modular programs. Java is a class-based, object-oriented programming language and is designed to have as few implementation dependencies as possible. A general-purpose programming language made for developers to write once run anywhere that is compiled Java code can run on all platforms that support Java. Java applications are compiled to byte code that can run on any Java Virtual Machine. The syntax of Java is similar to c/c++.",
+        },
+        variables: {
+          title: "Variables and Data Types",
+          text: "A variable is a container which holds the value while the Java program is executed. A variable is assigned with a data type. Variable is a name of memory location. There are three types of variables in java: local, instance and static. There are two types of data types in Java: primitive and non-primitive.",
+        },
+        control: {
+          title: "Control Statements",
+          text: "A control statement in java is a statement that determines whether the other statements will be executed or not. It controls the flow of a program. An 'if' statement in java determines the sequence of execution between a set of two statements. Control Statements can be divided into three categories, namely.",
+        },
+        oop: {
+          title: "Object-Oriented Programming",
+          text: "Object-oriented programming (OOP) is a computer programming model that organizes software design around data, or objects, rather than functions and logic. An object can be defined as a data field that has unique attributes and behavior.",
+        },
+        arrays: {
+          title: "Arrays and Collections",
+         text: "Arrays are fixed in size, meaning once we create an array, we cannot increase or decrease its size based on our requirement. Collections, on the other hand, are growable in nature, allowing us to dynamically increase or decrease their size as needed. Writing in memory, arrays are not recommended to use.",
+        },
+        exception: {
+          title: "Exception Handling",
+          text: "Exception handling in Java is a powerful mechanism used to handle runtime errors so that the normal flow of the application can be maintained. In this tutorial, we will learn about Java exceptions, their types, and the difference between checked and unchecked exceptions.",
+        },
+        file: {
+          title: "File Handling",
+          text: "File handling in Java involves reading from and writing data to a file. The `java.io` package provides classes that allow us to handle and work with different file formats. To work with files, we create an object of the specific file class and specify the file or directory name.",
+        },
+      };
+
+      // Update the content on the right side
+      var title = contentMap[topic].title;
+      var text = contentMap[topic].text;
+
+      $("#content")
+        .html("<h1>" + title + "</h1><p>" + text + "</p>")
+        .removeClass("hide");
+    }
+  </script>
+</body>
+</html>

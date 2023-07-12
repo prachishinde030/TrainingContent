@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Champ Prachii</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    /* Custom CSS styles */
+    .navbar {
+      background-color: rgb(49, 20, 128);
+      color: #fff;
+      padding: 10px 20px;
+    }
+
+    .navbar-brand {
+      font-size: 24px;
+      color: #fff;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff;
+      text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+    }
+    .container{
+        color: rgb(6, 6, 6);
+    }
+    .card{
+      border: 1.5px solid #535353;
+      border-radius: 5px;
+
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">
+        <img src="harbinger_logo.png" width="150" height="40">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Blog</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <section id="courses" class="bg-light">
+    <div class="container">
+      <h2 class="text-center">Courses</h2>
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="card mb-4">
+
+            <img class="card-img-top" src="java-logo-1.png" width="100" height="200" alt="Course 1">
+            <div class="card-body">
+              <h5 class="card-title">Java Course</h5>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#javaModal">Demo</button>
+              <a href="java.html" class="btn btn-success">Get Started</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card mb-4">
+
+            <img class="card-img-top" src="reactfin.png" width="80" height="200" alt="Course 2">
+            <div class="card-body">
+              <h5 class="card-title">React Course</h5>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reactModal">Demo</button>
+              <a href="react.html" class="btn btn-success">Get Started</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card mb-4">
+
+            <img class="card-img-top" src="Javascript.png" height="200" alt="Course 3">
+            <div class="card-body">
+              <h5 class="card-title">Javascript Course</h5>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#javascriptModal">Demo</button>
+              <a href="javascript.html" class="btn btn-success">Get Started</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Java Modal -->
+  <div class="modal fade" id="javaModal" tabindex="-1" role="dialog" aria-labelledby="javaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="javaModalLabel">Java Course</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Description of the Course</p>
+          <p>Java is a multi-platform, object-oriented, and network-centric language that can be used as a platform in itself. It is a fast, secure, reliable programming language for coding everything from mobile apps and enterprise software to big data applications and server-side technologies.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <a href="https://youtu.be/UmnCZ7-9yDY" class="btn btn-primary" target="_blank">Watch Video</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- React Modal -->
+  <div class="modal fade" id="reactModal" tabindex="-1" role="dialog" aria-labelledby="reactModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="reactModalLabel">React Course</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Description of the Course</p>
+          <p>React is a JavaScript library for building user interfaces. React is used to build single-page applications. React allows us to create reusable UI components.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <a href="https://youtu.be/RGKi6LSPDLU" class="btn btn-primary" target="_blank">Watch Video</a>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Javascript Modal -->
+  <div class="modal fade" id="javascriptModal" tabindex="-1" role="dialog" aria-labelledby="javascriptModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="javascriptModalLabel">Javascript Course</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Description of the Course</p>
+          <p>JavaScript is a dynamic computer programming language. It is lightweight and most commonly used as a part of web pages, whose implementations allow client-side script to interact with the user and make dynamic pages. It is an interpreted programming language with object-oriented capabilities.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <a href="https://youtu.be/hKB-YGF14SY" class="btn btn-primary" target="_blank">Watch Video</a>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
